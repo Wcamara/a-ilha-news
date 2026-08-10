@@ -11,6 +11,17 @@
             --baby-blue: #89CFF0;
             --fundo: #F4F7F6;
             --texto: #2C3E50;
+            --card-bg: white;
+        }
+
+        /* Variaveis exclusivas do Modo Escuro */
+        body.dark-mode {
+            --azul-profundo: #89CFF0; 
+            --azul-ilha: #5bb3f0;
+            --baby-blue: #0A2463;
+            --fundo: #121212;
+            --texto: #E0E0E0;
+            --card-bg: #1E1E1E;
         }
 
         body {
@@ -19,212 +30,156 @@
             color: var(--texto);
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         header {
-            background: linear-gradient(135deg, var(--azul-profundo), var(--azul-ilha));
+            background: linear-gradient(135deg, #0A2463, #3E92CC);
             color: white;
             padding: 3.5rem 1rem;
             text-align: center;
             border-bottom-left-radius: 30% 15px;
             border-bottom-right-radius: 30% 15px;
-            box-shadow: 0 4px 15px rgba(10, 36, 99, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0, 0.2);
             position: relative; 
             overflow: hidden;   
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-        }
-        header p {
-            margin: 10px 0 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
+        header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: 3px; }
+        header p { margin: 10px 0 0 0; font-size: 1.2rem; font-style: italic; }
 
-        /* Animação da Logo da Lagum */
+        /* Estilo do Botão Dark Mode */
+        .btn-dark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+        .btn-dark:hover { background: rgba(255, 255, 255, 0.4); }
+
         .logo-animada {
             position: absolute;
-            top: 25px;
-            width: 55px;
-            height: 55px;
             border-radius: 50%;
-            opacity: 0.85;
-            animation: atravessar 12s linear infinite;
+            opacity: 0.7;
+            animation: atravessar linear infinite;
+            left: -150px;
         }
-
         @keyframes atravessar {
-            0% { left: -100px; transform: rotate(-15deg); }
-            50% { transform: rotate(15deg); }
-            100% { left: 100vw; transform: rotate(-15deg); }
+            0% { transform: translateX(0) rotate(-15deg); }
+            50% { transform: translateX(60vw) rotate(15deg); }
+            100% { transform: translateX(120vw) rotate(-15deg); }
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 2.5rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2.5rem;
-        }
-
-        .secao-titulo {
-            border-bottom: 3px solid var(--baby-blue);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--azul-profundo);
-            font-weight: 700;
-        }
+        .container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem; display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; }
+        .secao-titulo { border-bottom: 3px solid var(--baby-blue); padding-bottom: 0.5rem; margin-bottom: 1.5rem; color: var(--azul-profundo); font-weight: 700; }
         
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            border-left: 5px solid var(--azul-ilha);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-        .card small {
-            color: gray;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-        .card h3 {
-            margin: 10px 0;
-            color: var(--azul-profundo);
-            font-size: 1.4rem;
-        }
-        .card p {
-            line-height: 1.6;
-        }
-        .card a {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--azul-ilha);
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 15px;
-            background-color: rgba(137, 207, 240, 0.15);
-            border-radius: 20px;
-            transition: background 0.2s;
-        }
-        .card a:hover {
-            background-color: var(--baby-blue);
-            color: var(--azul-profundo);
-        }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-left: 5px solid var(--azul-ilha); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .card small { color: gray; font-weight: bold; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+        .card h3 { margin: 10px 0; color: var(--azul-profundo); font-size: 1.4rem; }
+        .card a { display: inline-block; margin-top: 10px; color: var(--azul-ilha); text-decoration: none; font-weight: bold; padding: 5px 15px; background-color: rgba(137, 207, 240, 0.15); border-radius: 20px; }
+        
+        .agenda-lista { list-style: none; padding: 0; }
+        .agenda-lista li { padding: 10px 0; border-bottom: 1px dashed #ddd; }
+        .agenda-lista li:last-child { border-bottom: none; }
+        .agenda-lista strong { color: var(--azul-ilha); }
 
-        .agenda-lista {
-            list-style: none;
-            padding: 0;
-        }
-        .agenda-lista li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #ddd;
-        }
-        .agenda-lista li:last-child {
-            border-bottom: none;
-        }
-        .agenda-lista strong {
-            color: var(--azul-ilha);
-        }
+        /* Estilos Extras (Contador e Letra) */
+        .letra-dia { font-size: 1.2rem; font-style: italic; text-align: center; padding: 1.5rem; background: var(--card-bg); border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--azul-profundo); color: var(--texto); box-shadow: 0 4px 10px rgba(0,0,0,0.04);}
+        #contador { font-size: 1.1rem; font-weight: bold; color: #ff5722; text-align: center; margin-top: 15px; background: rgba(255,87,34,0.1); padding: 10px; border-radius: 8px;}
 
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            header {
-                border-radius: 0 0 20px 20px;
-            }
-        }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="lagumn.jpg" alt="Emote Lagum" class="logo-animada">
+        <!-- O Botão de Modo Escuro -->
+        <button class="btn-dark" onclick="toggleDarkMode()">🌙 Modo Escuro</button>
+
+        <img src="lagumn.jpg" alt="Emote" class="logo-animada" style="top: 10px; width: 60px; height: 60px; animation-duration: 14s; animation-delay: 0s;">
+        <img src="lagumn.jpg" alt="Emote" class="logo-animada" style="top: 70px; width: 40px; height: 40px; animation-duration: 20s; animation-delay: 4s;">
+        <img src="lagumn.jpg" alt="Emote" class="logo-animada" style="top: 30px; width: 75px; height: 75px; animation-duration: 25s; animation-delay: 8s;">
+        <img src="lagumn.jpg" alt="Emote" class="logo-animada" style="top: 110px; width: 50px; height: 50px; animation-duration: 17s; animation-delay: 12s;">
+        
         <h1>A ILHA NEWS</h1>
         <p>A sua fonte oficial de novidades da Lagum</p>
     </header>
 
     <div class="container">
-        <!-- Coluna da Esquerda: Notícias -->
+        <!-- Coluna da Esquerda -->
         <main>
+            <div class="letra-dia">
+                🎵 "Deixa o vento bater, o cabelo voar, deixa o tempo dizer..."
+            </div>
+
             <h2 class="secao-titulo">Últimas Notícias</h2>
             
         <article class="card">
             <small>Atualizado em: 10 Aug 2026 17:55</small>
             <h3>Lagum grava projeto audiovisual às margens do Rio Negro</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQUjFRTXpjTjh1cU4tanpYSUtwdHltQWZIbFNyZDlqTUpYRWhJdDB4MkJWajh0SENjNVdwbWhKTE91X0YwSTg4NHYxeHMwQzM4M2pON2Y1RkVCdDBuRFBlTkFfUTEweGUyNjhNWVpJczhYV1NWQU0yMmxSZDZ6VV8wSjBfcExVMHpsZmdRRjV0MA?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
         <article class="card">
             <small>Atualizado em: 10 Aug 2026 05:00</small>
             <h3>Lagum anuncia novidades nos 10 anos do disco 'Seja o que eu quiser'</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxNckUxUE1NLXZpcEFvX21mdDZCemZ1bE9zc1YxVGNsNXp1WnFBRFpsYzN1ajRJT3BCYms3LVZZeFBwQnNERmM0b2xNcTJER1RjOWhieVJzYVUteGRpTFkwUUEwZko3Ym9BRl9iU0NSNDdCU0ZPZVhpZjZJUU1BX3F3RDZPZ1VUWW4yS2k5Q2hSU19jdUVSd056X3FKeDdqR0V6N2xBLWNuRWVhcHFqV19DSlhWeDJtVG0wVnEyUXh2bWhKZXBhLTh0X25NMUE2ZTNz0gHWAUFVX3lxTE5MUDltM1FXNU1XNWJYX0lHZEpLbVJTcHNKODJMaUxRNGUzUjJFZjRBXzhVWVhCUld5RW1oZk1MdHVDLVljRG4xcU90OXlVbHlJclhoa29zMmVIQ210T0RZbkpLNHBSYTZnWnVlZXczYTVhZXcyN2taOVp3WW9LNXFTTmFFR3dkbkF2QWl0UlExSVptSkRSc2ZFNnZwbXNzQ04zaHdMMDZDSmlabERDRHItTkFxYkpsOTk1S1laODI3c2tCT3czYjY3VUFqb2RlZ1hCTVJTN2c?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
         <article class="card">
             <small>Atualizado em: 09 Aug 2026 06:31</small>
             <h3>Profético! Verso da banda Lagum sobre agosto de 2026 ganha novo significado dez anos depois</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPNUVFUVVOSDJWLW9mRE0wMUk4dUZObE5mVEJRSmFrNDJxRUNoN3B0Y2NyYkwxNW1FY1RkbnlHTHhNMU9mc3RrMVJNM0U0S1dPeVFfTmpNME14M3VxOE44Rm1wb0VKcmNoVHJpeXNOVzU1dDRjU3M2OUxwQTJVbi1TS1RTTnlSTVRGakZXd1dzdnlOZkpVdGdfSERhWnRPanI4a0pFRS0tNTdja0dSaTl4OVYzbEtZYXNqY3hENnVvbU13a3FnYW5J?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
         <article class="card">
             <small>Atualizado em: 06 Aug 2026 12:57</small>
             <h3>No João Rock, Lagum revela o que ainda dá nervoso antes do show</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQanJEWS0tbG9ERngzc1VvOUlVZTFJUzdTeWxkVFZVLXA4Q1JvTzlGSDVCaHIyX1VUVWtSZk9odTFFZ2Ztc2QtSkFvMUJ6WTNPMjFJXzItZ1hDQUhIQWE3VnpJbWFzNUtpTU5nYUdhU2ZyY3BaczN3WmxlaWhZMU12MmsxWlJ4ZnBVVjFlREV5bDhCSUdRUng4OERVT1M3STFTTDNjUWZKSUFHLWFC?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
         <article class="card">
             <small>Atualizado em: 06 Aug 2026 12:00</small>
             <h3>Lagum confirma show em Curitiba com nova turnê "Lagum em Todo Lugar"</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxONm1pREpFb0ZaSlA5eHB1OElod0p0OEJJUnpETnhIdFl1VGVsYWNiblNFLW1rejRtUGR0LVU2RHBlZG42X25TMXg4ZnNqaFVmX1NxaDkybnc3QllmWGlKZVBOVjhPUW1RUkNyWU9aalpyVF83Y3FkVkZjOUhzLVVDZE4tTnlOaUcxeUVaeVRrbHl6bkJ1OWJSRU5PRFZnNGNzQ09Fc2xR?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
         <article class="card">
             <small>Atualizado em: 05 Aug 2026 20:55</small>
             <h3>Lagum em Curitiba: banda anuncia show no Cine Lido para 13 de dezembro</h3>
-            <p>Confira os detalhes clicando no link abaixo.</p>
             <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQbDRjTDFyUF93TkU5UUFESUNZRFhoWUVtVk82S0g4eDI3Q3VqVVVLOWRmd1UtY3JjRUpabzdXcGtlaHAxZXczNFg0Ui1icF9FakhSQUJ0Q2FlN2JuZUpUX2Rza3U2Y0hIR2JRZEV0c2dTRVlfN0tXLUlyRXo3V0NmRmxON2dzdl9Vcm1GTkFwRWczYU1QTHVqcFZWTjNVdGc?oc=5" target="_blank">Ler matéria completa &rarr;</a>
         </article>
         
+
+            <!-- Mural da Ilha (Comentários Utterances) -->
+            <h2 class="secao-titulo">Mural da Ilha</h2>
+            <div class="card" style="border-left-color: #89CFF0;">
+                <script src="https://utteranc.es/client.js"
+                        repo="Wcamara/a-ilha-news"
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
         </main>
 
-        <!-- Coluna da Direita: Youtube, Spotify e Agenda -->
+        <!-- Coluna da Direita -->
         <aside>
             <h2 class="secao-titulo">Canal Oficial</h2>
-            
-        <div class="card" style="border-left-color: #ff0000;">
-            <img src="https://img.youtube.com/vi/61BvCevs1WI/hqdefault.jpg" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa do Vídeo">
-            <p style="margin-top:0;"><strong>LAGUM Ao Vivo na Amazônia</strong></p>
-            <a href="https://www.youtube.com/watch?v=61BvCevs1WI" target="_blank" style="color: #ff0000; background-color: #ffeaea; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Assistir no YouTube &rarr;</a>
-        </div>
-        
+            <div class='card'><p>Vídeo mais recente temporariamente indisponível.</p></div>
 
             <h2 class="secao-titulo">No Repeat</h2>
-            
-                <div class="card" style="border-left-color: #1DB954;">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/18/88/f0/1888f0b3-b89d-40f6-a4d9-abf7345b07df/886447522103.jpg/400x400bb.jpg" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
-                    <p style="margin-top:0;"><strong>Oi</strong></p>
-                    <p style="font-size: 0.9rem; color: gray;">Coisas da Geração</p>
-                    <a href="https://open.spotify.com/search/Oi%20Lagum" target="_blank" style="color: white; background-color: #1DB954; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Ouvir no Spotify &rarr;</a>
-                </div>
-                
+            <!-- O Player Nativo Oficial Voltou -->
+            <iframe style="border-radius:12px; margin-bottom: 1.5rem;" src="https://open.spotify.com/embed/artist/57vWImR43h4CaDaoVDdiFR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
@@ -235,10 +190,58 @@
 <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
 
                 </ul>
-                <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank">Ver todos os ingressos</a>
+                <!-- Aqui o cronômetro ganha vida -->
+                <p id="contador">Calculando próximo show...</p>
+                <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank" style="display:block; text-align:center; margin-top: 10px;">Ver Ingressos</a>
             </div>
         </aside>
     </div>
 
+    <!-- Cérebro Interativo do Site (JavaScript) -->
+    <script>
+        // 1. LÓGICA DO MODO ESCURO
+        const body = document.body;
+        const btnDark = document.querySelector('.btn-dark');
+        
+        // Verifica se o usuário já tinha ativado antes
+        if (localStorage.getItem('dark-mode') === 'ativo') {
+            body.classList.add('dark-mode');
+            btnDark.textContent = '☀️ Modo Claro';
+        }
+
+        // Função do botão
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'ativo');
+                btnDark.textContent = '☀️ Modo Claro';
+            } else {
+                localStorage.setItem('dark-mode', 'inativo');
+                btnDark.textContent = '🌙 Modo Escuro';
+            }
+        }
+
+        // 2. LÓGICA DO CONTADOR REGRESSIVO
+        const dataShow = new Date("Oct 17, 2026 20:00:00").getTime();
+        
+        const relogio = setInterval(function() {
+            const agora = new Date().getTime();
+            const distancia = dataShow - agora;
+
+            if (distancia < 0) {
+                clearInterval(relogio);
+                document.getElementById("contador").innerHTML = "HOJE TEM SHOW!";
+                return;
+            }
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML = 
+                "⏳ Faltam: " + dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
+        }, 1000);
+    </script>
 </body>
 </html>
