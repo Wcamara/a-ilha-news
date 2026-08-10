@@ -6,17 +6,14 @@ def atualizar_site():
     print("Iniciando varredura pela Lagum...\n")
     
     # ---------------------------------------------------------
-    # 1. NOTÍCIAS (Ordenadas e com Manchetes Limpas)
+    # 1. NOTÍCIAS
     # ---------------------------------------------------------
     rss_url = "https://news.google.com/rss/search?q=Banda+Lagum&hl=pt-BR&gl=BR&ceid=BR:pt-419"
     feed = feedparser.parse(rss_url)
     
-    # Força a lista a ser ordenada por data (reverse=True = Mais nova no topo)
     noticias_ordenadas = sorted(feed.entries, key=lambda x: x.published_parsed, reverse=True)
-    
     html_noticias = ""
     for entrada in noticias_ordenadas[:6]:
-        # Limpeza da manchete: Corta fora o nome do site que o Google anexa no final
         pedacos = entrada.title.split(" - ")
         titulo_limpo = " - ".join(pedacos[:-1]) if len(pedacos) > 1 else entrada.title
         
@@ -30,20 +27,16 @@ def atualizar_site():
         """
 
     # ---------------------------------------------------------
-    # 2. BOT DO YOUTUBE (Scraping com Regex)
+    # 2. BOT DO YOUTUBE
     # ---------------------------------------------------------
-    # Acessa a página oficial e caça o link do RSS de vídeos oculto no código
     url_canal = "https://www.youtube.com/@LagumOficial"
     html_yt = requests.get(url_canal).text
-    
     match = re.search(r'href="(https://www.youtube.com/feeds/videos\.xml\?channel_id=[^"]+)"', html_yt)
     
     html_youtube = ""
     if match:
         rss_yt = match.group(1)
         feed_yt = feedparser.parse(rss_yt)
-        
-        # Pega o primeiríssimo vídeo (Lançamento)
         ultimo_video = feed_yt.entries[0] 
         id_video = ultimo_video.link.split("v=")[-1]
         capa_yt = f"https://img.youtube.com/vi/{id_video}/hqdefault.jpg"
@@ -52,12 +45,12 @@ def atualizar_site():
         <div class="card" style="border-left-color: #ff0000;">
             <img src="{capa_yt}" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa do Vídeo">
             <p style="margin-top:0;"><strong>{ultimo_video.title}</strong></p>
-            <a href="{ultimo_video.link}" target="_blank" style="color: #ff0000; background-color: #ffeaea;">Assistir no YouTube &rarr;</a>
+            <a href="{ultimo_video.link}" target="_blank" style="color: #ff0000; background-color: #ffeaea; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Assistir no YouTube &rarr;</a>
         </div>
         """
 
     # ---------------------------------------------------------
-    # 3. LANÇAMENTO MUSICAL (Radar iTunes -> Botão Spotify)
+    # 3. LANÇAMENTO MUSICAL (Spotify)
     # ---------------------------------------------------------
     url_itunes = "https://itunes.apple.com/search?term=lagum&attribute=artistTerm&entity=musicTrack&limit=15&sort=recent"
     resposta = requests.get(url_itunes).json()
@@ -70,7 +63,7 @@ def atualizar_site():
                 capa = musica['artworkUrl100'].replace('100x100bb', '400x400bb') 
                 nome_musica = musica['trackName']
                 
-                # Transforma o nome da música em um link de busca direto do Spotify
+                # Sequestro de rota: Cria o link direto para buscar no Spotify
                 busca_formatada = nome_musica.replace(" ", "%20") + "%20Lagum"
                 link_spotify = f"https://open.spotify.com/search/{busca_formatada}"
                 
@@ -84,10 +77,21 @@ def atualizar_site():
                 """
                 break
 
+    # ---------------------------------------------------------
+    # 4. AGENDA DE SHOWS (O erro estava aqui!)
+    # ---------------------------------------------------------
     shows = [
+        {"data": "17 de Out", "local": "Arena Hall, BH"},
+        {"data": "07 de Nov", "local": "Qualistage, RJ"},
+        {"data": "28 de Nov", "local": "Ulysses C. Convenções, BSB"}
+    ]
+    
+    html_shows = ""
+    for show in shows:
+        html_shows += f"<li><strong>{show['data']}</strong> - {show['local']}</li>\n"
 
     # ---------------------------------------------------------
-    # 4. INJETANDO NO TEMPLATE
+    # 5. INJETANDO TUDO NO TEMPLATE
     # ---------------------------------------------------------
     with open("template.html", "r", encoding="utf-8") as arquivo:
         template = arquivo.read()
@@ -100,7 +104,7 @@ def atualizar_site():
     with open("index.html", "w", encoding="utf-8") as arquivo_final:
         arquivo_final.write(template)
         
-    print("Sucesso! O Bot de Notícias e o Bot do YouTube trabalharam em conjunto.")
+    print("Sucesso! Site atualizado com Spotify e agenda completa.")
 
 if __name__ == "__main__":
     atualizar_site()
