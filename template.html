@@ -152,23 +152,16 @@
         </main>
 
         <!-- Coluna da Direita: Agenda e Spotify -->
+        <!-- Coluna da Direita: Agenda e Spotify -->
         <aside>
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
                 <h3>Lagum em Todo Lugar</h3>
                 <ul class="agenda-lista">
-                    <li><strong>17 de Out</strong> - Arena Hall, BH</li>
-                    <li><strong>07 de Nov</strong> - Qualistage, RJ</li>
-                    <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
+                    <!-- O robô vai injetar os shows aqui -->
+                    {{ lista_de_shows }}
                 </ul>
                 <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank">Ver todos os ingressos</a>
             </div>
-
-            <h2 class="secao-titulo">No Repeat</h2>
-            <!-- O robô vai injetar o lançamento aqui -->
-            {{ secao_lancamento }}
-        </aside>
-    </div>
-
 </body>
 </html>
