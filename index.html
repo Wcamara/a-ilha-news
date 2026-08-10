@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Ilha News | Tudo sobre a Lagum</title>
+    <style>
+        :root {
+            /* Paleta de Cores inspirada em "Baby Blue" e "A Ilha" */
+            --azul-profundo: #0A2463; 
+            --azul-ilha: #3E92CC;
+            --baby-blue: #89CFF0;
+            --fundo: #F4F7F6;
+            --texto: #2C3E50;
+        }
+
+        /* Estilos base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fundo);
+            color: var(--texto);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Cabeçalho com curvas (referência ao álbum) */
+        header {
+            background: linear-gradient(135deg, var(--azul-profundo), var(--azul-ilha));
+            color: white;
+            padding: 3.5rem 1rem;
+            text-align: center;
+            /* Curvas sutis na borda inferior */
+            border-bottom-left-radius: 30% 15px;
+            border-bottom-right-radius: 30% 15px;
+            box-shadow: 0 4px 15px rgba(10, 36, 99, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        /* Cartões de Notícias */
+        .secao-titulo {
+            border-bottom: 3px solid var(--baby-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--azul-profundo);
+            font-weight: 700;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px; /* Mais curvo */
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--azul-ilha);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+        .card small {
+            color: gray;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .card h3 {
+            margin: 10px 0;
+            color: var(--azul-profundo);
+            font-size: 1.4rem;
+        }
+        .card p {
+            line-height: 1.6;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--azul-ilha);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 15px;
+            background-color: rgba(137, 207, 240, 0.15); /* Fundo baby blue transparente */
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+        .card a:hover {
+            background-color: var(--baby-blue);
+            color: var(--azul-profundo);
+        }
+
+        /* Lista de Shows */
+        .agenda-lista {
+            list-style: none;
+            padding: 0;
+        }
+        .agenda-lista li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .agenda-lista li:last-child {
+            border-bottom: none;
+        }
+        .agenda-lista strong {
+            color: var(--azul-ilha);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header {
+                border-radius: 0 0 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>A ILHA NEWS</h1>
+        <p>A sua fonte oficial de novidades da Lagum</p>
+    </header>
+
+    <div class="container">
+        <!-- Coluna da Esquerda: Notícias -->
+        <main>
+            <h2 class="secao-titulo">Últimas Notícias</h2>
+            
+            <!-- Notícia dinâmica (Espaço para o robô preencher) -->
+            <article class="card">
+                <small>Atualizado em: Sun, 09 Aug 2026 06:31:45 GMT</small>
+                <h3>Profético! Verso da banda Lagum sobre agosto de 2026 ganha novo significado dez anos depois - Blog Glau na Capital</h3>
+                <p>Confira os detalhes desta matéria clicando no link abaixo....</p>
+                <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPNUVFUVVOSDJWLW9mRE0wMUk4dUZObE5mVEJRSmFrNDJxRUNoN3B0Y2NyYkwxNW1FY1RkbnlHTHhNMU9mc3RrMVJNM0U0S1dPeVFfTmpNME14M3VxOE44Rm1wb0VKcmNoVHJpeXNOVzU1dDRjU3M2OUxwQTJVbi1TS1RTTnlSTVRGakZXd1dzdnlOZkpVdGdfSERhWnRPanI4a0pFRS0tNTdja0dSaTl4OVYzbEtZYXNqY3hENnVvbU13a3FnYW5J?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+            </article>
+
+            <!-- Notícia Estática (Exemplo com dados reais da banda) -->
+            <article class="card">
+                <small>Atualizado em: Ontem</small>
+                <h3>Lagum anuncia turnê "Lagum em Todo Lugar"</h3>
+                <p>Comemorando os anos de estrada e o sucesso do novo álbum independente, a banda revelou datas para uma turnê nacional massiva a partir de outubro de 2026, com ingressos pela Ticketmaster...</p>
+                <a href="#">Ler matéria completa &rarr;</a>
+            </article>
+        </main>
+
+        <!-- Coluna da Direita: Agenda e Spotify -->
+        <aside>
+            <h2 class="secao-titulo">Na Estrada</h2>
+            <div class="card">
+                <h3>Lagum em Todo Lugar</h3>
+                <ul class="agenda-lista">
+                    <!-- O script iteraria sobre uma lista de shows -->
+                    <li><strong>{{ data_show }}</strong> - {{ cidade_show }}</li>
+                    <li><strong>17 de Out</strong> - Arena Hall, BH</li>
+                    <li><strong>07 de Nov</strong> - Qualistage, RJ</li>
+                    <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
+                </ul>
+                <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank">Ver todos os ingressos</a>
+            </div>
+
+            <h2 class="secao-titulo">No Repeat</h2>
+            <div class="card">
+                <h3>Ouvindo agora</h3>
+                <p style="margin-top:0;"><em>As Cores, as Curvas e as Dores do Mundo</em></p>
+                <!-- Player real do álbum da Lagum -->
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7LHPGpPZV2duyGmI2KthiX?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </aside>
+    </div>
+
+</body>
+</html>
