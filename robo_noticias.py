@@ -57,32 +57,34 @@ def atualizar_site():
         """
 
     # ---------------------------------------------------------
-    # 3. LANÇAMENTO MUSICAL E SHOWS
+    # 3. LANÇAMENTO MUSICAL (Radar iTunes -> Botão Spotify)
     # ---------------------------------------------------------
-    url_itunes = "https://itunes.apple.com/search?term=banda+lagum&entity=musicTrack&limit=1&sort=recent"
+    url_itunes = "https://itunes.apple.com/search?term=lagum&attribute=artistTerm&entity=musicTrack&limit=15&sort=recent"
     resposta = requests.get(url_itunes).json()
     
-    html_lancamento = ""
+    html_lancamento = "<div class='card'><p>Nenhum lançamento recente encontrado.</p></div>"
+    
     if resposta['resultCount'] > 0:
-        musica = resposta['results'][0]
-        capa = musica['artworkUrl100'].replace('100x100bb', '400x400bb') 
-        html_lancamento = f"""
-        <div class="card" style="border-left-color: #1DB954;">
-            <img src="{capa}" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
-            <p style="margin-top:0;"><strong>{musica['trackName']}</strong></p>
-            <p style="font-size: 0.9rem; color: gray;">{musica['collectionName']}</p>
-            <a href="{musica['trackViewUrl']}" target="_blank" style="color: #1DB954; background-color: #e8f8ee;">Ouvir Agora &rarr;</a>
-        </div>
-        """
+        for musica in resposta['results']:
+            if musica['artistName'].lower() == 'lagum':
+                capa = musica['artworkUrl100'].replace('100x100bb', '400x400bb') 
+                nome_musica = musica['trackName']
+                
+                # Transforma o nome da música em um link de busca direto do Spotify
+                busca_formatada = nome_musica.replace(" ", "%20") + "%20Lagum"
+                link_spotify = f"https://open.spotify.com/search/{busca_formatada}"
+                
+                html_lancamento = f"""
+                <div class="card" style="border-left-color: #1DB954;">
+                    <img src="{capa}" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
+                    <p style="margin-top:0;"><strong>{nome_musica}</strong></p>
+                    <p style="font-size: 0.9rem; color: gray;">{musica['collectionName']}</p>
+                    <a href="{link_spotify}" target="_blank" style="color: white; background-color: #1DB954; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Ouvir no Spotify &rarr;</a>
+                </div>
+                """
+                break
 
     shows = [
-        {"data": "17 de Out", "local": "Arena Hall, BH"},
-        {"data": "07 de Nov", "local": "Qualistage, RJ"},
-        {"data": "28 de Nov", "local": "Ulysses C. Convenções, BSB"}
-    ]
-    html_shows = ""
-    for show in shows:
-        html_shows += f"<li><strong>{show['data']}</strong> - {show['local']}</li>\n"
 
     # ---------------------------------------------------------
     # 4. INJETANDO NO TEMPLATE
