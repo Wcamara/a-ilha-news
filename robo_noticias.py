@@ -37,17 +37,22 @@ def atualizar_site():
     if match:
         rss_yt = match.group(1)
         feed_yt = feedparser.parse(rss_yt)
-        ultimo_video = feed_yt.entries[0] 
-        id_video = ultimo_video.link.split("v=")[-1]
-        capa_yt = f"https://img.youtube.com/vi/{id_video}/hqdefault.jpg"
         
-        html_youtube = f"""
-        <div class="card" style="border-left-color: #ff0000;">
-            <img src="{capa_yt}" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
-            <p style="margin-top:0;"><strong>{ultimo_video.title}</strong></p>
-            <a href="{ultimo_video.link}" target="_blank" style="color: white; background-color: #ff0000; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Assistir no YouTube &rarr;</a>
-        </div>
-        """
+        # Trava de segurança: Verifica se a lista não está vazia antes de acessar o índice [0]
+        if len(feed_yt.entries) > 0:
+            ultimo_video = feed_yt.entries[0] 
+            id_video = ultimo_video.link.split("v=")[-1]
+            capa_yt = f"https://img.youtube.com/vi/{id_video}/hqdefault.jpg"
+            
+            html_youtube = f"""
+            <div class="card" style="border-left-color: #ff0000;">
+                <img src="{capa_yt}" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
+                <p style="margin-top:0;"><strong>{ultimo_video.title}</strong></p>
+                <a href="{ultimo_video.link}" target="_blank" style="color: white; background-color: #ff0000; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Assistir no YouTube &rarr;</a>
+            </div>
+            """
+        else:
+            html_youtube = "<div class='card'><p>Vídeo mais recente temporariamente indisponível.</p></div>"
 
     # ---------------------------------------------------------
     # 3. LETRA DO DIA (Sorteador automático)
