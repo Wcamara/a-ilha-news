@@ -23,13 +23,12 @@
             padding: 0;
         }
         
-        /* Cabeçalho com curvas (referência ao álbum) */
+        /* Cabeçalho com curvas */
         header {
             background: linear-gradient(135deg, var(--azul-profundo), var(--azul-ilha));
             color: white;
             padding: 3.5rem 1rem;
             text-align: center;
-            /* Curvas sutis na borda inferior */
             border-bottom-left-radius: 30% 15px;
             border-bottom-right-radius: 30% 15px;
             box-shadow: 0 4px 15px rgba(10, 36, 99, 0.2);
@@ -68,7 +67,7 @@
         
         .card {
             background: white;
-            border-radius: 12px; /* Mais curvo */
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
@@ -101,7 +100,7 @@
             text-decoration: none;
             font-weight: bold;
             padding: 5px 15px;
-            background-color: rgba(137, 207, 240, 0.15); /* Fundo baby blue transparente */
+            background-color: rgba(137, 207, 240, 0.15);
             border-radius: 20px;
             transition: background 0.2s;
         }
@@ -148,48 +147,66 @@
         <!-- Coluna da Esquerda: Notícias -->
         <main>
             <h2 class="secao-titulo">Últimas Notícias</h2>
+            <!-- O robô vai injetar TODOS os cards de notícias aqui de uma vez -->
             
-            <!-- Notícia dinâmica (Espaço para o robô preencher) -->
-            <article class="card">
-                <small>Atualizado em: Sun, 09 Aug 2026 06:31:45 GMT</small>
-                <h3>Profético! Verso da banda Lagum sobre agosto de 2026 ganha novo significado dez anos depois - glaunacapital.com</h3>
-                <p>Confira os detalhes desta matéria clicando no link abaixo....</p>
-                <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPNUVFUVVOSDJWLW9mRE0wMUk4dUZObE5mVEJRSmFrNDJxRUNoN3B0Y2NyYkwxNW1FY1RkbnlHTHhNMU9mc3RrMVJNM0U0S1dPeVFfTmpNME14M3VxOE44Rm1wb0VKcmNoVHJpeXNOVzU1dDRjU3M2OUxwQTJVbi1TS1RTTnlSTVRGakZXd1dzdnlOZkpVdGdfSERhWnRPanI4a0pFRS0tNTdja0dSaTl4OVYzbEtZYXNqY3hENnVvbU13a3FnYW5J?oc=5" target="_blank">Ler matéria completa &rarr;</a>
-            </article>
-
-            <!-- Notícia Estática (Exemplo com dados reais da banda) -->
-            <article class="card">
-                <small>Atualizado em: Ontem</small>
-                <h3>Lagum anuncia turnê "Lagum em Todo Lugar"</h3>
-                <p>Comemorando os anos de estrada e o sucesso do novo álbum independente, a banda revelou datas para uma turnê nacional massiva a partir de outubro de 2026, com ingressos pela Ticketmaster...</p>
-                <a href="#">Ler matéria completa &rarr;</a>
-            </article>
+        <article class="card">
+            <small>Atualizado em: 09 Aug 2026 06:31</small>
+            <h3>Profético! Verso da banda Lagum sobre agosto de 2026 ganha novo significado dez anos depois - Blog Glau na Capital</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPNUVFUVVOSDJWLW9mRE0wMUk4dUZObE5mVEJRSmFrNDJxRUNoN3B0Y2NyYkwxNW1FY1RkbnlHTHhNMU9mc3RrMVJNM0U0S1dPeVFfTmpNME14M3VxOE44Rm1wb0VKcmNoVHJpeXNOVzU1dDRjU3M2OUxwQTJVbi1TS1RTTnlSTVRGakZXd1dzdnlOZkpVdGdfSERhWnRPanI4a0pFRS0tNTdja0dSaTl4OVYzbEtZYXNqY3hENnVvbU13a3FnYW5J?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
+        <article class="card">
+            <small>Atualizado em: 10 Aug 2026 05:00</small>
+            <h3>Lagum anuncia novidades nos 10 anos do disco 'Seja o que eu quiser' - Estado de Minas</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOSmdhRVJoc3c1SU9Yb0RkM0lqWVpLaDFiaUoycXE0NGdDWnVTYjVKVkEtTldabGc3SjliekJxTmFJRVRmT04yMlNJNF9pQjZwMUl4QUtKVHpPamJ4NDBzaTYyYVhBSHZzYTZyRDBDOVV0V2VDR0RQMmlPU0R0THl6a3RFcm9qaUJiQk51LTJoUnpHM3FDYWdLMkRZcS1aZDFLLU9QS0V0anNUeGpKYkVpM1RILS0tWkY0dGFWYWRlYzFoRjRZYk9SNW5xTTlsWnM?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
+        <article class="card">
+            <small>Atualizado em: 06 Aug 2026 12:00</small>
+            <h3>Lagum confirma show em Curitiba com nova turnê "Lagum em Todo Lugar" - Gazeta do Paraná</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxONm1pREpFb0ZaSlA5eHB1OElod0p0OEJJUnpETnhIdFl1VGVsYWNiblNFLW1rejRtUGR0LVU2RHBlZG42X25TMXg4ZnNqaFVmX1NxaDkybnc3QllmWGlKZVBOVjhPUW1RUkNyWU9aalpyVF83Y3FkVkZjOUhzLVVDZE4tTnlOaUcxeUVaeVRrbHl6bkJ1OWJSRU5PRFZnNGNzQ09Fc2xR?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
+        <article class="card">
+            <small>Atualizado em: 05 Aug 2026 19:15</small>
+            <h3>Lagum se apresenta em Brasília em novembro com nova turnê - Correio Braziliense</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPZExYLUZTQmRPMUpqSGF5cE52bDBZQm9PZFAtcldTQVY5QXd4X0RsREJvTEVxd3VIQzRwZFhGa0dsTEFLZDBpMDZNWFIyN1lyXzYxcURWdUJ4d2I3R05jM29kUW9rb2sxMGdVeTRRVzNVOV9Kc1pNZUhacW45VmZrSERRZ2pGWHQ3Xzk2NzR6cno0NFdhZDVCa29LWUs3czhYZDZLWGFOTTBCbVhiUzV1cE1xcW1aM3FQM0VrZUNYZ1ZRWThVVlJZbGRGYWjSAdIBQVVfeXFMTWJPWjhuQ0xmeFBRRC00M0stSTdUVGZvcHM5T2pvN0MtMlE3ZXlMT1NHMjdiM1hmZGdpdTFVM1dMSHlMVll3b2kzdVBjWHU0Mk1nbFBVU3J5amoxaFRSZWRScG1HVkpiRjJaM2lQT3paanYxLTFDckx2Y3ZucV9Bel9OTVBTVEcxU3QwaHpOOFhBNzRaSnJQSVhNYUg3TWpibXNOM2M3WWRiNFl1YlNFc0o3TUFoNllrRWEwMTUtOTlGZzg4cVhueFJLMmRORHhidjNB?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
+        <article class="card">
+            <small>Atualizado em: 05 Aug 2026 20:55</small>
+            <h3>Lagum em Curitiba: banda anuncia show no Cine Lido para 13 de dezembro - Curitiba Cult</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQbDRjTDFyUF93TkU5UUFESUNZRFhoWUVtVk82S0g4eDI3Q3VqVVVLOWRmd1UtY3JjRUpabzdXcGtlaHAxZXczNFg0Ui1icF9FakhSQUJ0Q2FlN2JuZUpUX2Rza3U2Y0hIR2JRZEV0c2dTRVlfN0tXLUlyRXo3V0NmRmxON2dzdl9Vcm1GTkFwRWczYU1QTHVqcFZWTjNVdGc?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
+        <article class="card">
+            <small>Atualizado em: 04 Aug 2026 20:53</small>
+            <h3>Lagum anuncia nova turnê nacional, realizando promessa de 10 anos atrás - Rádio Mix FM</h3>
+            <p>Confira os detalhes desta matéria clicando no link abaixo.</p>
+            <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPYjludEo3Umxzbnk3NC1FWVFyTUlWVDQxTGFLdUg3YV9tT205dF9fMjJFYUJodXBzbVRJX2E1VjF1bkI4aTlxdVJOY1dfaHlMNFo0MGs2RXpyd3BsYTRuSHNTdEpUWDJpRkhMMjBrNjRtRUtzVWJoU3k3RjFLYjJQcm1IX25LWHgtRjlPb2Y2b1dIMF96SWlCbnBsLWFlQQ?oc=5" target="_blank">Ler matéria completa &rarr;</a>
+        </article>
+        
         </main>
 
+        <!-- Coluna da Direita: Agenda e Spotify -->
         <!-- Coluna da Direita: Agenda e Spotify -->
         <aside>
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
                 <h3>Lagum em Todo Lugar</h3>
                 <ul class="agenda-lista">
-                    <!-- O script iteraria sobre uma lista de shows -->
-                    <li><strong>{{ data_show }}</strong> - {{ cidade_show }}</li>
+                    <!-- O robô vai injetar os shows aqui -->
                     <li><strong>17 de Out</strong> - Arena Hall, BH</li>
-                    <li><strong>07 de Nov</strong> - Qualistage, RJ</li>
-                    <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
+<li><strong>07 de Nov</strong> - Qualistage, RJ</li>
+<li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
+
                 </ul>
                 <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank">Ver todos os ingressos</a>
             </div>
-
-            <h2 class="secao-titulo">No Repeat</h2>
-            <div class="card">
-                <h3>Ouvindo agora</h3>
-                <p style="margin-top:0;"><em>As Cores, as Curvas e as Dores do Mundo</em></p>
-                <!-- Player real do álbum da Lagum -->
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7LHPGpPZV2duyGmI2KthiX?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-        </aside>
-    </div>
-
 </body>
 </html>
