@@ -47,7 +47,6 @@
         header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; letter-spacing: 3px; }
         header p { margin: 10px 0 0 0; font-size: 1.2rem; font-style: italic; }
 
-        /* Estilo do Botão Dark Mode */
         .btn-dark {
             position: absolute;
             top: 20px;
@@ -91,7 +90,6 @@
         .agenda-lista li:last-child { border-bottom: none; }
         .agenda-lista strong { color: var(--azul-ilha); }
 
-        /* Estilos Extras (Contador e Letra) */
         .letra-dia { font-size: 1.2rem; font-style: italic; text-align: center; padding: 1.5rem; background: var(--card-bg); border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--azul-profundo); color: var(--texto); box-shadow: 0 4px 10px rgba(0,0,0,0.04);}
         #contador { font-size: 1.1rem; font-weight: bold; color: #ff5722; text-align: center; margin-top: 15px; background: rgba(255,87,34,0.1); padding: 10px; border-radius: 8px;}
 
@@ -101,7 +99,6 @@
 <body>
 
     <header>
-        <!-- O Botão de Modo Escuro -->
         <button class="btn-dark" onclick="toggleDarkMode()">🌙 Modo Escuro</button>
 
         <img src="lagumn.jpg" alt="Emote" class="logo-animada" style="top: 10px; width: 60px; height: 60px; animation-duration: 14s; animation-delay: 0s;">
@@ -113,11 +110,13 @@
         <p>A sua fonte oficial de novidades da Lagum</p>
     </header>
 
+    <!-- O Início da Estrutura de Colunas -->
     <div class="container">
-        <!-- Coluna da Esquerda -->
+        
+        <!-- Coluna da Esquerda (Notícias e Mural) -->
         <main>
             <div class="letra-dia">
-                🎵 "Seja o que eu quiser, eu não vou fugir..."
+                🎵 "Ninguém me ensinou a viver assim, eu fui aprendendo..."
             </div>
 
             <h2 class="secao-titulo">Últimas Notícias</h2>
@@ -159,31 +158,28 @@
         </article>
         
 
-           <!-- Mural da Ilha (Próprio) -->
+            <!-- Mural da Ilha -->
             <h2 class="secao-titulo">Mural da Ilha</h2>
             <div class="card" style="border-left-color: #89CFF0;">
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
-                    <input type="text" id="nome-fa" placeholder="Seu nome ou apelido" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                    <textarea id="texto-fa" placeholder="Deixe seu recado para a Lagum..." rows="3" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; resize: vertical;"></textarea>
+                    <input type="text" id="nome-fa" placeholder="Seu nome ou apelido" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; background: var(--fundo); color: var(--texto);">
+                    <textarea id="texto-fa" placeholder="Deixe seu recado para a Lagum..." rows="3" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; resize: vertical; background: var(--fundo); color: var(--texto);"></textarea>
                     <button onclick="adicionarComentario()" style="background-color: var(--azul-ilha); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s;">Enviar Recado</button>
                 </div>
                 <div id="lista-comentarios" style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
                     <!-- Comentários aparecerão aqui -->
                 </div>
             </div>
-            </div>
         </main>
 
-        <!-- Coluna da Direita -->
+        <!-- Coluna da Direita (Spotify, Youtube, Shows) -->
         <aside>
             <h2 class="secao-titulo">Canal Oficial</h2>
             <div class='card'><p>Vídeo mais recente não encontrado. Verifique o ID do canal.</p></div>
-            
-           <h2 class="secao-titulo">No Repeat</h2>
-            <!-- Player Nativo Oficial (Rota Consertada) -->
-            <iframe style="border-radius:12px; margin-bottom: 1.5rem;" src="https://open.spotify.com/embed/artist/57vWImR43h4CaDaoVDdiFR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-
+            <h2 class="secao-titulo">No Repeat</h2>
+            <!-- Player Nativo do Spotify com ID Corrigido -->
+            <iframe style="border-radius:12px; margin-bottom: 1.5rem;" src="https://open.spotify.com/embed/artist/5D56dZmhE9DgT01XixdHiD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
@@ -194,12 +190,12 @@
 <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
 
                 </ul>
-                <!-- Aqui o cronômetro ganha vida -->
                 <p id="contador">Calculando próximo show...</p>
                 <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank" style="display:block; text-align:center; margin-top: 10px;">Ver Ingressos</a>
             </div>
         </aside>
-    </div>
+        
+    </div> <!-- Fim da Estrutura de Colunas -->
 
     <!-- Cérebro Interativo do Site (JavaScript) -->
     <script>
@@ -207,13 +203,11 @@
         const body = document.body;
         const btnDark = document.querySelector('.btn-dark');
         
-        // Verifica se o usuário já tinha ativado antes
         if (localStorage.getItem('dark-mode') === 'ativo') {
             body.classList.add('dark-mode');
             btnDark.textContent = '☀️ Modo Claro';
         }
 
-        // Função do botão
         function toggleDarkMode() {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -226,35 +220,42 @@
         }
 
         // 2. LÓGICA DO CONTADOR REGRESSIVO
-        const dataShow = new Date("Oct 17, 2026 20:00:00").getTime();
-        
-        const relogio = setInterval(function() {
-            const agora = new Date().getTime();
-            const distancia = dataShow - agora;
+        const dataShowString = "Oct 17, 2026 20:00:00";
+        if(dataShowString && !dataShowString.includes("{{")) {
+            const dataShow = new Date(dataShowString).getTime();
+            const relogio = setInterval(function() {
+                const agora = new Date().getTime();
+                const distancia = dataShow - agora;
 
-            if (distancia < 0) {
-                clearInterval(relogio);
-                document.getElementById("contador").innerHTML = "HOJE TEM SHOW!";
-                return;
-            }
+                if (distancia < 0) {
+                    clearInterval(relogio);
+                    document.getElementById("contador").innerHTML = "HOJE TEM SHOW!";
+                    return;
+                }
 
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+                const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-            document.getElementById("contador").innerHTML = 
-                "⏳ Faltam: " + dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
-        }, 1000);
+                document.getElementById("contador").innerHTML = 
+                    "⏳ Faltam: " + dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
+            }, 1000);
+        }
 
-	// 3. LÓGICA DO MURAL PRÓPRIO
+        // 3. LÓGICA DO MURAL PRÓPRIO
         function carregarComentarios() {
             const mural = document.getElementById('lista-comentarios');
             const comentarios = JSON.parse(localStorage.getItem('mural-lagum')) || [];
             mural.innerHTML = '';
-            comentarios.forEach(c => {
-                mural.innerHTML += `<div style="background: rgba(0,0,0,0.03); padding: 12px; border-radius: 8px; border-left: 3px solid var(--azul-ilha);"><strong style="color: var(--azul-profundo);">${c.nome}</strong><p style="margin: 5px 0 0 0; font-size: 0.95rem;">${c.texto}</p></div>`;
-            });
+            
+            if(comentarios.length === 0) {
+                mural.innerHTML = '<p style="text-align:center; color:gray; font-size:0.9rem;">Seja o primeiro a deixar um recado!</p>';
+            } else {
+                comentarios.forEach(c => {
+                    mural.innerHTML += `<div style="background: var(--fundo); padding: 12px; border-radius: 8px; border-left: 3px solid var(--azul-ilha);"><strong style="color: var(--azul-profundo);">${c.nome}</strong><p style="margin: 5px 0 0 0; font-size: 0.95rem;">${c.texto}</p></div>`;
+                });
+            }
         }
 
         function adicionarComentario() {
@@ -263,7 +264,7 @@
             if(!nome || !texto) return alert("Preencha o nome e o recado!");
             
             const comentarios = JSON.parse(localStorage.getItem('mural-lagum')) || [];
-            comentarios.unshift({ nome, texto }); // Coloca o recado novo no topo
+            comentarios.unshift({ nome, texto }); 
             localStorage.setItem('mural-lagum', JSON.stringify(comentarios));
             
             document.getElementById('nome-fa').value = '';
@@ -271,8 +272,7 @@
             carregarComentarios();
         }
 
-        carregarComentarios(); // Executa ao abrir a página
-
+        carregarComentarios(); 
     </script>
 </body>
 </html>
