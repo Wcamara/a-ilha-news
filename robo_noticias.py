@@ -26,11 +26,11 @@ def atualizar_site():
         </article>
         """
 
-    ---------------------------------------------------------
+    # ---------------------------------------------------------
     # 2. BOT DO YOUTUBE (Blindado via RSS Direto)
     # ---------------------------------------------------------
-    # Substitua pelo ID que você capturou no código-fonte
-    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=UC5s8xoNsOtTXPDafVH3hkjw"
+    # Substitua pelo ID do canal que você capturou no código-fonte (ex: UC...)
+    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=COLOQUE_O_ID_AQUI"
     feed_yt = feedparser.parse(url_rss_yt)
     
     html_youtube = ""
@@ -47,7 +47,7 @@ def atualizar_site():
         </div>
         """
     else:
-        html_youtube = "<div class='card'><p>Vídeo mais recente não encontrado.</p></div>"
+        html_youtube = "<div class='card'><p>Vídeo mais recente não encontrado. Verifique o ID do canal.</p></div>"
 
     # ---------------------------------------------------------
     # 3. LETRA DO DIA (Sorteador automático)
@@ -91,7 +91,7 @@ def atualizar_site():
     with open("index.html", "w", encoding="utf-8") as arquivo_final:
         arquivo_final.write(template)
         
-    print("Sucesso! Site atualizado com Modo Escuro, Contador, Letras e Comentários.")
+    print("Sucesso! Site atualizado!")
 
 if __name__ == "__main__":
     atualizar_site()
