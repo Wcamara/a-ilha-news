@@ -6,15 +6,13 @@
     <title>A Ilha News | Tudo sobre a Lagum</title>
     <style>
         :root {
-            /* Paleta de Cores inspirada em "Baby Blue" e "A Ilha" */
-            --azul-profundo: #0A2463; 
-            --azul-ilha: #3E92CC;
-            --baby-blue: #89CFF0;
-            --fundo: #F4F7F6;
-            --texto: #2C3E50;
+            var(--azul-profundo): #0A2463; 
+            var(--azul-ilha): #3E92CC;
+            var(--baby-blue): #89CFF0;
+            var(--fundo): #F4F7F6;
+            var(--texto): #2C3E50;
         }
 
-        /* Estilos base */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--fundo);
@@ -23,7 +21,6 @@
             padding: 0;
         }
         
-        /* Cabeçalho com curvas */
         header {
             background: linear-gradient(135deg, var(--azul-profundo), var(--azul-ilha));
             color: white;
@@ -32,6 +29,8 @@
             border-bottom-left-radius: 30% 15px;
             border-bottom-right-radius: 30% 15px;
             box-shadow: 0 4px 15px rgba(10, 36, 99, 0.2);
+            position: relative; 
+            overflow: hidden;   
         }
         header h1 {
             margin: 0;
@@ -46,7 +45,23 @@
             font-style: italic;
         }
 
-        /* Container Principal */
+        /* Animação da Logo da Lagum */
+        .logo-animada {
+            position: absolute;
+            top: 25px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            opacity: 0.85;
+            animation: atravessar 12s linear infinite;
+        }
+
+        @keyframes atravessar {
+            0% { left: -100px; transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+            100% { left: 100vw; transform: rotate(-15deg); }
+        }
+
         .container {
             max-width: 1100px;
             margin: 2.5rem auto;
@@ -56,7 +71,6 @@
             gap: 2.5rem;
         }
 
-        /* Cartões de Notícias */
         .secao-titulo {
             border-bottom: 3px solid var(--baby-blue);
             padding-bottom: 0.5rem;
@@ -109,7 +123,6 @@
             color: var(--azul-profundo);
         }
 
-        /* Lista de Shows */
         .agenda-lista {
             list-style: none;
             padding: 0;
@@ -125,7 +138,6 @@
             color: var(--azul-ilha);
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
@@ -139,6 +151,7 @@
 <body>
 
     <header>
+        <img src="lagumn.jpg" alt="Emote Lagum" class="logo-animada">
         <h1>A ILHA NEWS</h1>
         <p>A sua fonte oficial de novidades da Lagum</p>
     </header>
@@ -147,7 +160,6 @@
         <!-- Coluna da Esquerda: Notícias -->
         <main>
             <h2 class="secao-titulo">Últimas Notícias</h2>
-            <!-- O robô vai injetar TODOS os cards de notícias aqui de uma vez -->
             
         <article class="card">
             <small>Atualizado em: 10 Aug 2026 17:55</small>
@@ -193,23 +205,31 @@
         
         </main>
 
-        <!-- Coluna da Direita: Agenda e Spotify -->
+        <!-- Coluna da Direita: Youtube, Spotify e Agenda -->
         <aside>
-           <h2 class="secao-titulo">Canal Oficial</h2>
-           <!-- O robô vai injetar o último vídeo aqui -->
-           
+            <h2 class="secao-titulo">Canal Oficial</h2>
+            
         <div class="card" style="border-left-color: #ff0000;">
             <img src="https://img.youtube.com/vi/61BvCevs1WI/hqdefault.jpg" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa do Vídeo">
             <p style="margin-top:0;"><strong>LAGUM Ao Vivo na Amazônia</strong></p>
             <a href="https://www.youtube.com/watch?v=61BvCevs1WI" target="_blank" style="color: #ff0000; background-color: #ffeaea;">Assistir no YouTube &rarr;</a>
         </div>
-        	
+        
+
+            <h2 class="secao-titulo">No Repeat</h2>
+            
+        <div class="card" style="border-left-color: #1DB954;">
+            <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/24/a4/53/24a453b1-f649-dce8-1b58-8365dc3cfadf/8429006460465.jpg/400x400bb.jpg" style="width:100%; border-radius:12px; margin-bottom: 15px;" alt="Capa">
+            <p style="margin-top:0;"><strong>Detesto Despedidas (feat. Lagum) [Microfonado]</strong></p>
+            <p style="font-size: 0.9rem; color: gray;">Microfonado</p>
+            <a href="https://music.apple.com/us/album/detesto-despedidas-feat-lagum-microfonado/1590438776?i=1590439856&uo=4" target="_blank" style="color: #1DB954; background-color: #e8f8ee;">Ouvir Agora &rarr;</a>
+        </div>
+        
 
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
                 <h3>Lagum em Todo Lugar</h3>
                 <ul class="agenda-lista">
-                    <!-- O robô vai injetar os shows aqui -->
                     <li><strong>17 de Out</strong> - Arena Hall, BH</li>
 <li><strong>07 de Nov</strong> - Qualistage, RJ</li>
 <li><strong>28 de Nov</strong> - Ulysses C. Convenções, BSB</li>
@@ -217,5 +237,8 @@
                 </ul>
                 <a href="https://www.ticketmaster.com.br/event/lagum" target="_blank">Ver todos os ingressos</a>
             </div>
+        </aside>
+    </div>
+
 </body>
 </html>
