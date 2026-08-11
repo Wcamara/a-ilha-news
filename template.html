@@ -123,16 +123,18 @@
             <h2 class="secao-titulo">Últimas Notícias</h2>
             {{ lista_de_noticias }}
 
-            <!-- Mural da Ilha (Comentários Utterances) -->
+           <!-- Mural da Ilha (Próprio) -->
             <h2 class="secao-titulo">Mural da Ilha</h2>
             <div class="card" style="border-left-color: #89CFF0;">
-                <script src="https://utteranc.es/client.js"
-                        repo="Wcamara/a-ilha-news"
-                        issue-term="pathname"
-                        theme="github-light"
-                        crossorigin="anonymous"
-                        async>
-                </script>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="nome-fa" placeholder="Seu nome ou apelido" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                    <textarea id="texto-fa" placeholder="Deixe seu recado para a Lagum..." rows="3" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px; resize: vertical;"></textarea>
+                    <button onclick="adicionarComentario()" style="background-color: var(--azul-ilha); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s;">Enviar Recado</button>
+                </div>
+                <div id="lista-comentarios" style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
+                    <!-- Comentários aparecerão aqui -->
+                </div>
+            </div>
             </div>
         </main>
 
@@ -140,10 +142,12 @@
         <aside>
             <h2 class="secao-titulo">Canal Oficial</h2>
             {{ secao_youtube }}
+            
+           <h2 class="secao-titulo">No Repeat</h2>
+            <!-- Player Nativo Oficial (Rota Consertada) -->
+            <iframe style="border-radius:12px; margin-bottom: 1.5rem;" src="https://open.spotify.com/embed/artist/57vWImR43h4CaDaoVDdiFR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-            <h2 class="secao-titulo">No Repeat</h2>
-            <!-- O Player Nativo Oficial Voltou -->
-            <iframe style="border-radius:12px; margin-bottom: 1.5rem;" src="https://open.spotify.com/embed/artist/5D56dZmhE9DgT01XixdHiD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
 
             <h2 class="secao-titulo">Na Estrada</h2>
             <div class="card">
@@ -203,6 +207,33 @@
             document.getElementById("contador").innerHTML = 
                 "⏳ Faltam: " + dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
         }, 1000);
+
+	// 3. LÓGICA DO MURAL PRÓPRIO
+        function carregarComentarios() {
+            const mural = document.getElementById('lista-comentarios');
+            const comentarios = JSON.parse(localStorage.getItem('mural-lagum')) || [];
+            mural.innerHTML = '';
+            comentarios.forEach(c => {
+                mural.innerHTML += `<div style="background: rgba(0,0,0,0.03); padding: 12px; border-radius: 8px; border-left: 3px solid var(--azul-ilha);"><strong style="color: var(--azul-profundo);">${c.nome}</strong><p style="margin: 5px 0 0 0; font-size: 0.95rem;">${c.texto}</p></div>`;
+            });
+        }
+
+        function adicionarComentario() {
+            const nome = document.getElementById('nome-fa').value;
+            const texto = document.getElementById('texto-fa').value;
+            if(!nome || !texto) return alert("Preencha o nome e o recado!");
+            
+            const comentarios = JSON.parse(localStorage.getItem('mural-lagum')) || [];
+            comentarios.unshift({ nome, texto }); // Coloca o recado novo no topo
+            localStorage.setItem('mural-lagum', JSON.stringify(comentarios));
+            
+            document.getElementById('nome-fa').value = '';
+            document.getElementById('texto-fa').value = '';
+            carregarComentarios();
+        }
+
+        carregarComentarios(); // Executa ao abrir a página
+
     </script>
 </body>
 </html>
