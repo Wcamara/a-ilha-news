@@ -30,7 +30,7 @@ def atualizar_site():
     # 2. BOT DO YOUTUBE (Blindado via RSS Direto)
     # ---------------------------------------------------------
     # Substitua pelo ID do canal que você capturou no código-fonte (ex: UC...)
-    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=COLOQUE_O_ID_AQUI"
+    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=UC5s8xoNsOtTXPDafVH3hkjw"
     feed_yt = feedparser.parse(url_rss_yt)
     
     html_youtube = ""
@@ -53,11 +53,11 @@ def atualizar_site():
     # 3. LETRA DO DIA (Sorteador automático)
     # ---------------------------------------------------------
     letras = [
-        '"Deixa o vento bater, o cabelo voar, deixa o tempo dizer..."',
-        '"Seja o que eu quiser, eu não vou fugir..."',
+        '"A vida é boa pra carai, nem sei por que eu tô chorando Eu tenho vinte e poucos anos e não vou parar aqui"',
+        '"Cê não sabe o quanto é importante acordar ouvindo a sua voz"',
         '"Ninguém me ensinou a viver assim, eu fui aprendendo..."',
-        '"Hoje eu quero me perder pra me encontrar..."',
-        '"Eu não sou de fazer planos, mas contigo eu faço..."'
+        '"Pra onde eu vou se depois de amanhã ela não vai tá aqui"',
+        '"As cores, as curvas e as dores do mundo"'
     ]
     letra_do_dia = random.choice(letras)
 
