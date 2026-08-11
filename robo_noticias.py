@@ -30,7 +30,7 @@ def atualizar_site():
     # 2. BOT DO YOUTUBE (Blindado via RSS Direto)
     # ---------------------------------------------------------
     # Substitua pelo ID do canal que você capturou no código-fonte (ex: UC...)
-    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=COLOQUE_O_ID_AQUI"
+    url_rss_yt = "https://www.youtube.com/feeds/videos.xml?channel_id=UC5s8xoNsOtTXPDafVH3hkjw"
     feed_yt = feedparser.parse(url_rss_yt)
     
     html_youtube = ""
