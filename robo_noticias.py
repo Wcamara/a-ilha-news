@@ -53,11 +53,12 @@ def atualizar_site():
     # 3. LETRA DO DIA (Sorteador automático)
     # ---------------------------------------------------------
     letras = [
-        '"Deixa o vento bater, o cabelo voar, deixa o tempo dizer..."',
-        '"Seja o que eu quiser, eu não vou fugir..."',
+        '"A vida é boa pra carai, nem sei por que eu tô chorando
+Eu tenho vinte e poucos anos e não vou parar aqui"',
+        '"Cê não sabe o quanto é importante acordar ouvindo a sua voz"',
         '"Ninguém me ensinou a viver assim, eu fui aprendendo..."',
-        '"Hoje eu quero me perder pra me encontrar..."',
-        '"Eu não sou de fazer planos, mas contigo eu faço..."'
+        '"Pra onde eu vou se depois de amanhã ela não vai tá aqui"',
+        '"As cores, as curvas e as dores do mundo"'
     ]
     letra_do_dia = random.choice(letras)
 
