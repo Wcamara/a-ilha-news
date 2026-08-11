@@ -53,8 +53,7 @@ def atualizar_site():
     # 3. LETRA DO DIA (Sorteador automático)
     # ---------------------------------------------------------
     letras = [
-        '"A vida é boa pra carai, nem sei por que eu tô chorando
-Eu tenho vinte e poucos anos e não vou parar aqui"',
+        '"A vida é boa pra carai, nem sei por que eu tô chorando Eu tenho vinte e poucos anos e não vou parar aqui"',
         '"Cê não sabe o quanto é importante acordar ouvindo a sua voz"',
         '"Ninguém me ensinou a viver assim, eu fui aprendendo..."',
         '"Pra onde eu vou se depois de amanhã ela não vai tá aqui"',
